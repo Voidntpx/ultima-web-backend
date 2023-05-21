@@ -1,25 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
-
+import {BrowserRouter,Route,Routes} from 'react-router-dom'
+import CosmeticListing from './CosmeticListing';
+import CosmeticCreate from './CosmeticCreate';
+import CosmeticDetail from './CosmeticDetail';
+import CosmeticEdit from './CosmeticEdit';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Ultima Backdoor</h1>
+
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<CosmeticListing/>}></Route>
+          <Route path='/cosmetic/create' element={<CosmeticCreate />}></Route>
+          <Route path='/cosmetic/detail/:cosid' element={<CosmeticDetail />}></Route>
+          <Route path='/cosmetic/edit/:cosid' element={<CosmeticEdit />}></Route>
+        
+        </Routes>
+      </BrowserRouter>
     </div>
   );
+
+ 
 }
 
 export default App;
