@@ -76,7 +76,7 @@ const CosmeticListing = () => {
                                                         <td>
                                                             {/* <a onClick={() => { LoadEdit(item.id) }} className="btn btn-success">Edit</a> */}
                                                             <a onClick={() => { Removefunction(item.Id) }} className="btn btn-danger">Remove</a>
-                                                            {/* <a onClick={() => { LoadDetail(item.id) }} className="btn btn-primary">Details</a> */}
+                                                            <a onClick={() => { LoadDetail(item.Id) }} className="btn btn-primary">Details</a>
                                                         </td>
                                                     </tr>
                                                 ))

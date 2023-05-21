@@ -13,6 +13,7 @@ const CosmeticDetail = () => {
             return res.json();
         }).then((resp) => {
             cosdatachange(resp);
+            console.log(cosdata.data)
         }).catch((err) => {
             console.log(err.message);
         })
@@ -31,10 +32,16 @@ const CosmeticDetail = () => {
                     <div className="card-body"></div>
 
                     {cosdata.data &&
-                        <div>
-                            <h2>Thename is : <b>{cosdata.data.cos_name}</b>  ({cosdata.data.id})</h2>
-                            <Link className="btn btn-danger" to="/">Back to Listing</Link>
-                        </div>
+                        cosdata.data.map(item => (
+                            <tr key={item.Id}>
+                                <td>{item.Id}</td>
+                                <td>{item.cos_brand}</td>
+                                <td>{item.cos_name}</td>
+                                <td>{item.cos_desc}</td>
+                                <td>{item.cos_cate}</td>
+
+                            </tr>
+                        ))
                     }
                 </div>
             </div>

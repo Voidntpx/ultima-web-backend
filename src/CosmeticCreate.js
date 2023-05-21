@@ -25,11 +25,6 @@ const CosmeticCreate = () =>{
 
 
 
-    // const [list, setList] = useState([]);
-    // function addItemToList(myobj) {
-    //     const newItem = myobj; // Replace 'New item' with the actual value you want to add
-    //     setList(prevList => [...prevList, newItem]);
-    // }
 
 
 
