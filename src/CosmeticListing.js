@@ -1,10 +1,21 @@
 import { useEffect, useState } from "react";
 import axios from 'axios';
 import { Link, useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fab } from '@fortawesome/free-brands-svg-icons'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import { far } from '@fortawesome/free-regular-svg-icons'
+import $ from 'jquery'
+
+library.add(fab, fas, far)
 
 const CosmeticListing = () => {
     const [cosdata, cosdatachange] = useState(null);
     const navigate = useNavigate();
+    const check = (<FontAwesomeIcon className="icon check" icon="fa-regular fa-circle-check" />);
+    const uncheck = (<FontAwesomeIcon className="icon uncheck" icon="fa-regular fa-circle-xmark" />);
+
 
     const LoadDetail = (id) => {
         navigate("/cosmetic/detail/" + id);
@@ -25,12 +36,17 @@ const CosmeticListing = () => {
         }
     }
 
+    $(function(){
+        $('.cate[value="Eyeshadows"]').addClass('eyeshadow');
+        $('.cate[value="Blush on"]').addClass('blush');
+        $('.cate[value="Lipstick"]').addClass('');
+    });
+
 
 
 
     useEffect(() => {
         fetch("http://localhost:8000/cosmetic/checkall").then((res) => {
-
             return res.json();
         }).then((resp) => {
             cosdatachange(resp)
@@ -38,6 +54,7 @@ const CosmeticListing = () => {
         }).catch((err) => {
             console.log(err.message);
         })
+
     }, [])
     return (
         <div className="container">
@@ -53,36 +70,48 @@ const CosmeticListing = () => {
                                     <div className="divbtn">
                                         <Link to="cosmetic/create" className="btn btn-success">Add New (+)</Link>
                                     </div>
-                                    <table className="table table-bordered">
-                                        <thead className="bg-dark text-white">
+                                    <div className="p-4 m-3">
+                                        <table className="table table-cosmetic">
+                                        <thead className="">
                                             <tr>
-                                                <td>Id</td>
+                                                <td>Photo</td>
                                                 <td>Brand</td>
                                                 <td>Name</td>
-                                                <td>Description</td>
-                                                <td>Category</td>
-                                                <td>Action</td>
+                                                <td className="text-center">Category</td>
+                                                <td className="text-center">Try-on</td>
+                                                <td className="text-center">Action</td>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             {cosdata.data &&
                                                 cosdata.data.map(item => (
+                                                    console.log(item),
+                                                    
                                                     <tr key={item.Id}>
-                                                        <td>{item.Id}</td>
+                                                        {/* <td>{item.Id}</td> */}
+                                                        <td><img src={item.cos_img[0]} /></td>
                                                         <td>{item.cos_brand}</td>
-                                                        <td>{item.cos_name}</td>
-                                                        <td>{item.cos_desc}</td>
-                                                        <td>{item.cos_cate}</td>
+                                                        <td className="name">{item.cos_name}</td>
+                                                        {/* <td>{item.cos_desc}</td> */}
+                                                        <td className="d-flex justify-content-center">
+                                                            <div className="cate" value={item.cos_cate}>{item.cos_cate}</div>
+                                                        </td>
+                                                        <td className="text-center">{item.cos_istryon == true ? check : uncheck}</td>
                                                         <td>
                                                             {/* <a onClick={() => { LoadEdit(item.id) }} className="btn btn-success">Edit</a> */}
-                                                            <a onClick={() => { Removefunction(item.Id) }} className="btn btn-danger">Remove</a>
-                                                            <a onClick={() => { LoadDetail(item.Id) }} className="btn btn-primary">Details</a>
+                                                            {/* <a onClick={() => { Removefunction(item.Id) }} className="btn btn-danger">Remove</a>
+                                                            <a onClick={() => { LoadDetail(item.Id) }} className="btn btn-primary">Details</a> */}
+                                                            <div className="text-center">
+                                                                <FontAwesomeIcon  className="icon uncheck" onClick={() => { Removefunction(item.Id) }} icon="fa-regular fa-trash-can" />
+                                                            </div>
                                                         </td>
                                                     </tr>
                                                 ))
                                             }
                                         </tbody>
                                     </table>
+                                    </div>
+                                    
                                 </div>
                             )
                         } else {
