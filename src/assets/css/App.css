@@ -1,9 +1,9 @@
-html, body {
+.App {
   font-size: 20px;
   font-family: 'Inter', sans-serif;
   background-color: #F9F9F9;
   color: #0B1F4F; }
-  html img, body img {
+  .App img {
     width: 100%; }
 
 .header__ {
