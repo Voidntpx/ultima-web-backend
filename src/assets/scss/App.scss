@@ -1,0 +1,267 @@
+@import './_variable.scss';
+
+html,body{
+    font-size: 20px;
+    font-family: 'Inter', sans-serif;
+    background-color: $white;
+    img{
+        width: 100%;
+    }
+    color: $darkblue;
+}
+.header__{
+    display: flex;
+    padding: .8rem 1.5rem;
+    justify-content: space-between;
+    align-items: center;
+    width: 100vw;
+    .logo{
+        display: flex;
+        align-items: center;
+        img{
+            width: 75px;
+            margin-right: .2rem;
+        }
+        label{
+            font-family: 'Lexend', sans-serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: $blue;
+        }
+    }
+    .account{
+        display: flex;
+        align-items: center;
+        .profile-pic{
+            width: 50px;
+            height: 50px;
+            background-color: $blue;
+            margin-right: .5rem;
+            border-radius: 25px;
+        }
+        .text_{
+            display: flex;
+            flex-direction: column;
+            font-size: .7rem;
+            font-weight: 500;
+            color: $gray;
+            .name{
+                font-size: 0.85rem;
+                font-weight: 700;
+                color: $darkblue;
+            }
+        }
+        .icon {
+            font-size: 1.35rem;
+            &.g {
+                color: $gray;
+                font-size: 1.2rem;
+            }
+        }
+    }
+}
+
+.content {
+    width: 100vw;
+    display: flex;
+    height: calc(100vh);
+    .navbar-left {
+        flex: 1 1 25%;
+        background-color: $blue;
+        border-top-right-radius: 7rem;
+        .btn-add {
+            background-color: white;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: $blue;
+            padding: 0.5rem;
+            margin: 1rem;
+            text-align: center;
+            width: 60%;
+            border-radius: 100px;
+            margin-top: 40px;
+        }
+    }
+    &-right {
+        flex: 1 1 75%;
+    }
+}
+
+.table-cosmetic {
+    border: none;
+    thead {
+        background-color: white;
+        color: $gray;
+        font-size: 0.8rem;
+        font-weight: 700;
+        tr {
+            border-color: transparent;
+        }
+    }
+    tbody {
+        tr {
+            border-width: 0 !important;
+            color: $darkblue;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border-color: transparent;
+            td {
+                padding: 0.8rem 10px;
+                img {
+                    max-width: 45px;
+                }
+                &.name {
+                    color: $gray;
+                }
+                .cate {
+                    // background-color: #282c34;
+                    // color: aliceblue;
+                    width: 90%;
+                    font-size: 0.65rem;
+                    font-weight: 600;
+                    padding: .3rem 0;
+                    display: flex;
+                    justify-content: center;
+                    border-radius: 100px;
+                    &.eyeshadow {
+                        color: #3a2fd9;
+                        background-color: #c1bef2;
+                    }
+                    &.blush {
+                        color: #1e48bb;
+                        background-color: #a8bef8;
+                    }
+
+                }
+                .icon {
+                    font-size: 1.2rem;
+                    &.check {
+                        color: #23D34B;
+                    }
+                    &.uncheck {
+                        color: red;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.App {
+    //text-align: center;
+  }
+  
+  .App-logo {
+    height: 40vmin;
+    pointer-events: none;
+  }
+  
+  @media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+      animation: App-logo-spin infinite 20s linear;
+    }
+  }
+  
+  .btn{
+    margin: 2px;;
+  }
+  
+  .divbtn{
+    float: left;
+  }
+  
+  .form-field {
+    flex: 2;
+  }
+  
+  .output {
+    margin-left: 3rem;
+    flex: 1;
+  }
+  
+  .form-field label,
+  h2 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 500;
+    color: rgb(84, 84, 84);
+  }
+  
+  input {
+    height: 35px;
+    width: 100%;
+    padding: 7px;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid rgb(220, 220, 220);
+  }
+  
+  input:focus {
+    border: 1px solid rgb(0, 208, 255);
+  }
+  
+  .services {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .first-division {
+    display: flex;
+    flex-direction: column;
+    margin: 0 5px 0.5rem 0;
+    width: 100%;
+  }
+  
+  button {
+    background: none;
+    outline: none;
+    cursor: pointer;
+    font-weight: 500;
+    border-radius: 2px;
+    padding: 5px 10px;
+  }
+  
+  .first-division button {
+    align-self: flex-start;
+    display: flex;
+    align-items: center;
+    margin-top: 0.5rem;
+    color: rgb(9, 19, 106);
+    border: 1px solid rgb(0, 0, 0);
+  }
+  
+  .second-division button {
+    color: red;
+    border: 1px solid red;
+  }
+  
+  
+  
+  .App-header {
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+  }
+  
+  .App-link {
+    color: #61dafb;
+  }
+  
+  @keyframes App-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+//   .eyeshadow {
+//     color: #23D34B;
+//     background-color: #61dafb;
+// }
