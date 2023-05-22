@@ -13,7 +13,9 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import logoicon from './icon.png';
-
+import axios from 'axios';
+import Cookies from 'universal-cookie';
+import { useNavigate } from "react-router-dom";
 
 function Copyright(props) {
     return (
@@ -31,8 +33,9 @@ function Copyright(props) {
 // TODO remove, this demo shouldn't need to reset the theme.
 
 const defaultTheme = createTheme();
-
+const cookies = new Cookies();
 export default function Login() {
+    const navigate = useNavigate();
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
@@ -44,8 +47,33 @@ export default function Login() {
             "email": data.get('email'),
             "password": data.get('password'),
         };
-
         console.log(userdata)
+        fetch("http://localhost:8000/user/login", {
+            method: "POST",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify(userdata)
+        }).then((res) => {
+            // alert('Saved successfully.')
+          
+            
+            return res.json()
+        }).then((resp) => {
+            // cosdatachange(resp)
+            // console.log(resp['token'])
+            // console.log(baseURL)
+        if(resp['token']){
+            console.log(resp['token'])
+            cookies.set('jwt', resp['token'], { path: '/' });
+            window.location.reload();
+            
+        }else{
+            console.log('fail to login')
+        }
+            
+
+        }).catch((err) => {
+            console.log(err.message)
+        })
 
     };
 
