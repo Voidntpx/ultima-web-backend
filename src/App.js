@@ -14,10 +14,36 @@ import { far } from '@fortawesome/free-regular-svg-icons'
 import { Link, useNavigate } from "react-router-dom";
 import Cookies from 'universal-cookie';
 
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyAoiSAbsT3BlyqiebCozc6J3BgtV6re2gU",
+  authDomain: "ultima-b32f3.firebaseapp.com",
+  projectId: "ultima-b32f3",
+  storageBucket: "ultima-b32f3.appspot.com",
+  messagingSenderId: "889329332221",
+  appId: "1:889329332221:web:4ac563814d6a18aba7f394",
+  measurementId: "G-Y7B7DV2CLL"
+};
+
+// Initialize Firebase
+
+
+
+
 const cookies = new Cookies();
 library.add(fab, fas, far)
 const token = cookies.get('jwt')
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 function App() {
+ 
   return (
     <div>
       {token ?
