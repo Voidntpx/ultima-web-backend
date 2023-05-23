@@ -25,7 +25,7 @@ const CosmeticListing = () => {
     }
     const Removefunction = (id) => {
         if (window.confirm('Do you want to remove?')) {
-            fetch("http://localhost:8000/cosmetic/" + id, {
+            fetch("https://apiservice-d5qtigtmea-as.a.run.app/cosmetic/" + id, {
                 method: "DELETE"
             }).then((res) => {
                 alert('Removed successfully.')
@@ -46,7 +46,7 @@ const CosmeticListing = () => {
 
 
     useEffect(() => {
-        fetch("http://localhost:8000/cosmetic/checkall").then((res) => {
+        fetch("https://apiservice-d5qtigtmea-as.a.run.app/cosmetic/checkall").then((res) => {
             return res.json();
         }).then((resp) => {
             cosdatachange(resp)

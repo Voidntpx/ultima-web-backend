@@ -53,7 +53,7 @@ const CosmeticCreate = () => {
                 "name": list_ing_id[i]
             }
             // console.log(check_data)
-            await fetch("http://localhost:8000/ingredient/find", {
+            await fetch("https://apiservice-d5qtigtmea-as.a.run.app/ingredient/find", {
                 method: "POST",
                 headers: { "content-type": "application/json", "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6ZmFsc2UsInVzZXJuYW1lIjoiRnJhbmsifQ.b2tDz1PyZBMF7IuelehsHvhmD8d2uZt2lrndTB7XMWc" },
                 body: JSON.stringify(check_data)
@@ -97,7 +97,7 @@ const CosmeticCreate = () => {
         console.log(tryon);
 
 
-        fetch("http://localhost:8000/cosmetic/create", {
+        fetch("https://apiservice-d5qtigtmea-as.a.run.app/cosmetic/create", {
             method: "POST",
             headers: { "content-type": "application/json" },
             body: JSON.stringify(cosdata)
