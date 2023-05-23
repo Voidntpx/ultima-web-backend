@@ -8,7 +8,7 @@ const CosmeticDetail = () => {
     const [cosdata, cosdatachange] = useState({});
 
     useEffect(() => {
-        fetch("http://localhost:8000/cosmetic/" + cosid).then((res) => {
+        fetch("https://apiservice-d5qtigtmea-as.a.run.app/cosmetic/" + cosid).then((res) => {
             console.log(cosid)
             return res.json();
         }).then((resp) => {
