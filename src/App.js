@@ -21,15 +21,27 @@ function App() {
   return (
     <div>
       {token ?
-        <div className="App">
-          <Navbar />
-          <div className='content'>
-            <div className='navbar-left'>
-              <div className='btn-add'>Add New Product</div>
-              {/* <Link to="cosmetic/create" className="btn btn-success">Add New (+)</Link> */}
-            </div>
-            <div className='content-right'>
-              <BrowserRouter>
+        <BrowserRouter>
+          <div className="App">
+            <Navbar />
+            <div className='content'>
+              <div className='navbar-left'>
+                <Link to="cosmetic/create" style={{textDecoration: 'none'}}><div className='btn-add'>Add New Product</div></Link>
+                <div className='navbar-text active pt-4 mt-4'>
+                  <img src={require('./assets/img/cos-active.png')} />
+                  <label>Cosmetics</label>
+                </div>
+                <div className='navbar-text'>
+                  <img src={require('./assets/img/skin.png')} />
+                  <label>Skincare</label>
+                </div>
+                <div className='navbar-text'>
+                  <img src={require('./assets/img/fragrance.png')} />
+                  <label>Fragrance</label>
+                </div>
+                {/* <Link to="cosmetic/create" className="btn btn-success">Add New (+)</Link> */}
+              </div>
+              <div className='content-right'>
                 <Routes>
                   {/* <Route path='/' element={<Login />}></Route> */}
                   <Route path='/' element={<CosmeticListing />}></Route>
@@ -37,10 +49,10 @@ function App() {
                   <Route path='/cosmetic/detail/:cosid' element={<CosmeticDetail />}></Route>
                   <Route path='/cosmetic/edit/:cosid' element={<CosmeticEdit />}></Route>
                 </Routes>
-              </BrowserRouter>
+              </div>
             </div>
           </div>
-        </div>
+        </BrowserRouter>
         :
         <div>
           <BrowserRouter>

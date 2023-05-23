@@ -1,10 +1,21 @@
 .App {
   font-size: 20px;
   font-family: 'Inter', sans-serif;
-  background-color: #F9F9F9;
+  background-color: white;
   color: #0B1F4F; }
   .App img {
     width: 100%; }
+  .App input {
+    border: 0;
+    outline: 0;
+    padding: 1.2rem 0; }
+  .App input:focus {
+    outline: none !important; }
+  .App .title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0;
+    color: #0B1F4F; }
 
 .header__ {
   display: flex;
@@ -21,7 +32,7 @@
     .header__ .logo label {
       font-family: 'Lexend', sans-serif;
       font-weight: 700;
-      font-size: 1.8rem;
+      font-size: 2rem;
       color: #3461BF; }
   .header__ .account {
     display: flex;
@@ -35,11 +46,11 @@
     .header__ .account .text_ {
       display: flex;
       flex-direction: column;
-      font-size: .7rem;
+      font-size: .8rem;
       font-weight: 500;
       color: #A2ACBC; }
       .header__ .account .text_ .name {
-        font-size: 0.85rem;
+        font-size: 1rem;
         font-weight: 700;
         color: #0B1F4F; }
     .header__ .account .icon {
@@ -53,64 +64,103 @@
   display: flex;
   height: calc(100vh); }
   .content .navbar-left {
-    flex: 1 1 25%;
+    flex: 1 1 20%;
     background-color: #3461BF;
-    border-top-right-radius: 7rem; }
+    border-top-right-radius: 5rem; }
     .content .navbar-left .btn-add {
       background-color: white;
-      font-size: 0.8rem;
+      text-align: center;
+      font-size: 1rem;
       font-weight: 700;
       color: #3461BF;
-      padding: 0.5rem;
-      margin: 1rem;
+      padding: 0.8rem;
+      margin-left: 13%;
       text-align: center;
-      width: 60%;
+      width: 70%;
       border-radius: 100px;
       margin-top: 40px; }
+    .content .navbar-left .navbar-text {
+      display: flex;
+      align-items: center;
+      color: white;
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-left: 13%;
+      padding-bottom: 28px; }
+      .content .navbar-left .navbar-text.active {
+        color: #95B8F9; }
+      .content .navbar-left .navbar-text img {
+        width: 28px;
+        height: 28px;
+        margin-right: 0.8rem; }
   .content-right {
-    flex: 1 1 75%; }
+    flex: 1 1 80%; }
 
-.table-cosmetic {
+.cosmetic-content .fa-list-ul {
+  font-size: 1.8rem; }
+
+.cosmetic-content .table-cosmetic {
   border: none; }
-  .table-cosmetic thead {
+  .cosmetic-content .table-cosmetic thead {
     background-color: white;
     color: #A2ACBC;
     font-size: 0.8rem;
-    font-weight: 700; }
-    .table-cosmetic thead tr {
+    font-weight: 700;
+    height: 50px; }
+    .cosmetic-content .table-cosmetic thead tr {
       border-color: transparent; }
-  .table-cosmetic tbody tr {
+    .cosmetic-content .table-cosmetic thead td {
+      vertical-align: middle; }
+  .cosmetic-content .table-cosmetic tbody tr {
     border-width: 0 !important;
     color: #0B1F4F;
-    font-size: 0.8rem;
+    font-size: 0.95rem;
     font-weight: 600;
     border-color: transparent; }
-    .table-cosmetic tbody tr td {
-      padding: 0.8rem 10px; }
-      .table-cosmetic tbody tr td img {
+    .cosmetic-content .table-cosmetic tbody tr td {
+      padding: 0.8rem 10px;
+      vertical-align: middle; }
+      .cosmetic-content .table-cosmetic tbody tr td img {
         max-width: 45px; }
-      .table-cosmetic tbody tr td.name {
+      .cosmetic-content .table-cosmetic tbody tr td.name {
         color: #A2ACBC; }
-      .table-cosmetic tbody tr td .cate {
-        width: 90%;
-        font-size: 0.65rem;
-        font-weight: 600;
+      .cosmetic-content .table-cosmetic tbody tr td .cate {
+        width: 6.5rem;
+        font-size: 0.7rem;
+        font-weight: 700;
         padding: .3rem 0;
         display: flex;
+        color: white;
         justify-content: center;
-        border-radius: 100px; }
-        .table-cosmetic tbody tr td .cate.eyeshadow {
-          color: #3a2fd9;
-          background-color: #c1bef2; }
-        .table-cosmetic tbody tr td .cate.blush {
-          color: #1e48bb;
-          background-color: #a8bef8; }
-      .table-cosmetic tbody tr td .icon {
-        font-size: 1.2rem; }
-        .table-cosmetic tbody tr td .icon.check {
+        border-radius: 100px;
+        margin: 0 auto; }
+        .cosmetic-content .table-cosmetic tbody tr td .cate.eyeshadow {
+          background-color: #85a9ff; }
+        .cosmetic-content .table-cosmetic tbody tr td .cate.blush {
+          background-color: #4E82FF; }
+        .cosmetic-content .table-cosmetic tbody tr td .cate.lip {
+          background-color: #3C3D89; }
+      .cosmetic-content .table-cosmetic tbody tr td .icon {
+        font-size: 1.4rem; }
+        .cosmetic-content .table-cosmetic tbody tr td .icon.check {
           color: #23D34B; }
-        .table-cosmetic tbody tr td .icon.uncheck {
+        .cosmetic-content .table-cosmetic tbody tr td .icon.uncheck {
           color: red; }
+        .cosmetic-content .table-cosmetic tbody tr td .icon.trash {
+          color: #0B1F4F; }
+
+.create-cosmetic-card {
+  margin: 3rem 9rem;
+  border: none !important;
+  background-color: #F9F9F9 !important;
+  padding: 2rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #A2ACBC;
+  border-radius: 2rem !important; }
+
+.create-cosmetic p {
+  padding: 0 9rem; }
 
 .App-logo {
   height: 40vmin;

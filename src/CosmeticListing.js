@@ -39,7 +39,7 @@ const CosmeticListing = () => {
     $(function(){
         $('.cate[value="Eyeshadows"]').addClass('eyeshadow');
         $('.cate[value="Blush on"]').addClass('blush');
-        $('.cate[value="Lipstick"]').addClass('');
+        $('.cate[value="Lipstick"]').addClass('lip');
     });
 
 
@@ -57,28 +57,30 @@ const CosmeticListing = () => {
 
     }, [])
     return (
-        <div className="container">
+        <div className="container cosmetic-content">
             <div className="car">
-                <div className="card-title">
-                    <h2>Cosmetic Listing</h2>
+                <div className="card-title ps-4 pt-4 ms-3 mt-3 d-flex align-items-center">
+                    <FontAwesomeIcon icon="fa-solid fa-list-ul" />
+                    <h2 className=" title ps-2">Cosmetic List</h2>
                 </div>
                 <div>
                     {(() => {
                         if (cosdata) {
                             return (
                                 <div className="card-body">
-                                    <div className="divbtn">
+                                    {/* <div className="p-4 m-3 divbtn">
                                         <Link to="cosmetic/create" className="btn btn-success">Add New (+)</Link>
-                                    </div>
+                                    </div> */}
                                     <div className="p-4 m-3">
                                         <table className="table table-cosmetic">
-                                        <thead className="">
+                                        <thead>
                                             <tr>
                                                 <td>Photo</td>
                                                 <td>Brand</td>
                                                 <td>Name</td>
-                                                <td className="text-center">Category</td>
+
                                                 <td className="text-center">Try-on</td>
+                                                <td className="text-center">Category</td>
                                                 <td className="text-center">Action</td>
                                             </tr>
                                         </thead>
@@ -93,16 +95,18 @@ const CosmeticListing = () => {
                                                         <td>{item.cos_brand}</td>
                                                         <td className="name">{item.cos_name}</td>
                                                         {/* <td>{item.cos_desc}</td> */}
-                                                        <td className="d-flex justify-content-center">
+
+                                                        <td className="text-center">{item.cos_istryon == true ? check : uncheck}</td>
+                                                        <td className="text-center">
                                                             <div className="cate" value={item.cos_cate}>{item.cos_cate}</div>
                                                         </td>
-                                                        <td className="text-center">{item.cos_istryon == true ? check : uncheck}</td>
                                                         <td>
                                                             {/* <a onClick={() => { LoadEdit(item.id) }} className="btn btn-success">Edit</a> */}
                                                             {/* <a onClick={() => { Removefunction(item.Id) }} className="btn btn-danger">Remove</a>
-                                                            <a onClick={() => { LoadDetail(item.Id) }} className="btn btn-primary">Details</a> */}
+                                                            <a onClick={() => { LoadDetail(item.Id) }} className="btn btn-primary">Details</a>  */}
                                                             <div className="text-center">
-                                                                <FontAwesomeIcon  className="icon uncheck" onClick={() => { Removefunction(item.Id) }} icon="fa-regular fa-trash-can" />
+                                                                {/* <FontAwesomeIcon className="icon trash" onClick={() => { LoadEdit(item.id) }} icon="fa-regular fa-pen-to-square" />   */}
+                                                                <FontAwesomeIcon className="icon trash" onClick={() => { Removefunction(item.Id) }} icon="fa-regular fa-trash-can" />
                                                             </div>
                                                         </td>
                                                     </tr>

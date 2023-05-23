@@ -3,11 +3,20 @@
 .App{
     font-size: 20px;
     font-family: 'Inter', sans-serif;
-    background-color: $white;
+    background-color: white;
     img{
         width: 100%;
     }
     color: $darkblue;
+    input {border:0;outline:0;padding: 1.2rem 0;}
+    input:focus {outline:none!important;}
+    .title {
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin: 0;
+        color: $darkblue;
+
+    }
 }
 .header__{
     display: flex;
@@ -25,7 +34,7 @@
         label{
             font-family: 'Lexend', sans-serif;
             font-weight: 700;
-            font-size: 1.8rem;
+            font-size: 2rem;
             color: $blue;
         }
     }
@@ -42,11 +51,11 @@
         .text_{
             display: flex;
             flex-direction: column;
-            font-size: .7rem;
+            font-size: .8rem;
             font-weight: 500;
             color: $gray;
             .name{
-                font-size: 0.85rem;
+                font-size: 1rem;
                 font-weight: 700;
                 color: $darkblue;
             }
@@ -66,86 +75,139 @@
     display: flex;
     height: calc(100vh);
     .navbar-left {
-        flex: 1 1 25%;
+        flex: 1 1 20%;
         background-color: $blue;
-        border-top-right-radius: 7rem;
+        border-top-right-radius: 5rem;
         .btn-add {
             background-color: white;
-            font-size: 0.8rem;
+            text-align: center;
+            font-size: 1rem;
             font-weight: 700;
             color: $blue;
-            padding: 0.5rem;
-            margin: 1rem;
+            padding: 0.8rem;
+            margin-left: 13%;
             text-align: center;
-            width: 60%;
+            width: 70%;
             border-radius: 100px;
             margin-top: 40px;
         }
+        .navbar-text {
+            display: flex;
+            align-items: center;
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-left: 13%;
+            padding-bottom: 28px;
+            &.active {
+                color: $lightblue;
+            }
+            img {
+                width: 28px;
+                height:28px;
+                margin-right: 0.8rem;
+            }
+        }
     }
     &-right {
-        flex: 1 1 75%;
+        flex: 1 1 80%;
     }
 }
 
-.table-cosmetic {
-    border: none;
-    thead {
-        background-color: white;
-        color: $gray;
-        font-size: 0.8rem;
-        font-weight: 700;
-        tr {
-            border-color: transparent;
-        }
+.cosmetic-content {
+    .fa-list-ul {
+        font-size: 1.8rem;
     }
-    tbody {
-        tr {
-            border-width: 0 !important;
-            color: $darkblue;
+    .table-cosmetic {
+        border: none;
+        thead {
+            background-color: white;
+            color: $gray;
             font-size: 0.8rem;
-            font-weight: 600;
-            border-color: transparent;
+            font-weight: 700;
+            height: 50px;
+            tr {
+                border-color: transparent;
+            }
             td {
-                padding: 0.8rem 10px;
-                img {
-                    max-width: 45px;
-                }
-                &.name {
-                    color: $gray;
-                }
-                .cate {
-                    // background-color: #282c34;
-                    // color: aliceblue;
-                    width: 90%;
-                    font-size: 0.65rem;
-                    font-weight: 600;
-                    padding: .3rem 0;
-                    display: flex;
-                    justify-content: center;
-                    border-radius: 100px;
-                    &.eyeshadow {
-                        color: #3a2fd9;
-                        background-color: #c1bef2;
+                vertical-align:middle;
+            }
+        }
+        tbody {
+            tr {
+                border-width: 0 !important;
+                color: $darkblue;
+                font-size: 0.95rem;
+                font-weight: 600;
+                border-color: transparent;
+                td {
+                    padding: 0.8rem 10px;
+                    vertical-align:middle;
+                    img {
+                        max-width: 45px;
                     }
-                    &.blush {
-                        color: #1e48bb;
-                        background-color: #a8bef8;
+                    &.name {
+                        color: $gray;
                     }
-
-                }
-                .icon {
-                    font-size: 1.2rem;
-                    &.check {
-                        color: #23D34B;
+                    .cate {
+                        // background-color: #282c34;
+                        // color: aliceblue;
+                        width: 6.5rem;
+                        font-size: 0.7rem;
+                        font-weight: 700;
+                        padding: .3rem 0;
+                        display: flex;
+                        color: white;
+                        justify-content: center;
+                        border-radius: 100px;
+                        margin: 0 auto;
+                        &.eyeshadow {
+                            background-color: #85a9ff;
+                        }
+                        &.blush {
+                            background-color: #4E82FF;
+                        }
+                        &.lip {
+                            background-color: #3C3D89;
+                        }
+    
                     }
-                    &.uncheck {
-                        color: red;
+                    .icon {
+                        font-size: 1.4rem;
+                        &.check {
+                            color: #23D34B;
+                        }
+                        &.uncheck {
+                            color: red;
+                        }
+                        &.trash {
+                            color: $darkblue;
+                        }
                     }
                 }
             }
         }
     }
 }
+
+.create-cosmetic {
+    &-card {
+        margin: 3rem 9rem;
+        border: none !important;
+        background-color: $white !important;
+        padding: 2rem;
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: $gray;
+        border-radius: 2rem !important;
+    }
+    p {
+        padding: 0 9rem;
+    }
+
+}
+
+
 
 .App {
     //text-align: center;
