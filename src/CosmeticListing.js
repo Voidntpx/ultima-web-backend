@@ -15,8 +15,7 @@ const CosmeticListing = () => {
     const navigate = useNavigate();
     const check = (<FontAwesomeIcon className="icon check" icon="fa-regular fa-circle-check" />);
     const uncheck = (<FontAwesomeIcon className="icon uncheck" icon="fa-regular fa-circle-xmark" />);
-
-
+    const total_cos = cosdata ? cosdata.data.length : 0;
     const LoadDetail = (id) => {
         navigate("/cosmetic/detail/" + id);
     }
@@ -49,8 +48,7 @@ const CosmeticListing = () => {
         fetch("https://apiservice-d5qtigtmea-as.a.run.app/cosmetic/checkall").then((res) => {
             return res.json();
         }).then((resp) => {
-            cosdatachange(resp)
-            // console.log(resp)
+            cosdatachange(resp);
         }).catch((err) => {
             console.log(err.message);
         })
@@ -59,6 +57,16 @@ const CosmeticListing = () => {
     return (
         <div className="container cosmetic-content">
             <div className="car">
+                <div className="total-box ms-3 mt-3">
+                    <div className="title">
+                        <div>
+                            <FontAwesomeIcon className="pb-1" icon="fa-solid fa-newspaper" /><br></br>
+                            <label>Total Product in</label><br></br>
+                            <label>Category : Cosmetics</label>
+                        </div>
+                    </div>
+                    <p className="pe-4">{total_cos}</p>
+                </div>
                 <div className="card-title ps-4 pt-4 ms-3 mt-3 d-flex align-items-center">
                     <FontAwesomeIcon icon="fa-solid fa-list-ul" />
                     <h2 className=" title ps-2">Cosmetic List</h2>
@@ -87,7 +95,6 @@ const CosmeticListing = () => {
                                         <tbody>
                                             {cosdata.data &&
                                                 cosdata.data.map(item => (
-                                                    console.log(item),
                                                     
                                                     <tr key={item.Id}>
                                                         {/* <td>{item.Id}</td> */}
@@ -120,7 +127,7 @@ const CosmeticListing = () => {
                             )
                         } else {
                             return (
-                                <div>no data</div>
+                                <div className="loader">Loading...</div>
                             )
                         }
                     })()}
