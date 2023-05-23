@@ -24,7 +24,7 @@ class Navbar extends Component {
                 <div className='header__'>
                     <div className='logo'>
                         <img src={require('../assets/img/ultima-logo.png')} />
-                        <label>Ultima <label>Backoffice</label></label>
+                        <label>Ultima <label>Admin</label></label>
                     </div>
                     <div className='account'>
                         <FontAwesomeIcon className='icon g' icon="fa-regular fa-circle-question" />

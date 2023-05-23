@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
+
+
 const CosmeticCreate = () => {
 
     const [brand, brandchange] = useState("");
@@ -12,7 +14,8 @@ const CosmeticCreate = () => {
     const [ing_id, ing_idchange] = useState("");
     // const [cos_color_img, cos_color_imgchange] = useState("");
 
-    const [tryon, tryonchange] = useState(true);
+    // const [tryon, tryonchange] = useState(true);
+    const [tryon, setIsChecked] = useState(false)
     const [validation, valchange] = useState(false);
     const [validation2, valchange2] = useState(false);
     const [validation3, valchange3] = useState(false);
@@ -23,8 +26,9 @@ const CosmeticCreate = () => {
 
     const navigate = useNavigate();
 
-
-
+    const checkHandler = () => {
+        setIsChecked(!tryon)
+    }
 
 
 
@@ -90,7 +94,7 @@ const CosmeticCreate = () => {
             "cos_tryon_color": list_tryon_color,
             "ing_id": mylist
         };
-
+        console.log(tryon);
 
 
         fetch("http://localhost:8000/cosmetic/create", {
@@ -325,7 +329,9 @@ const CosmeticCreate = () => {
                             <div className="col-lg-12">
                                 <div className="form-check">
                                     <br></br>
-                                    <input onChange={e => tryonchange(e.target.checked)} type="checkbox" className="form-check-input"></input>
+                                    <input 
+                                    // onChange={e => tryonchange(e.target.value)} 
+                                    checked={tryon} onChange={checkHandler}type="checkbox" className="form-check-input"></input>
                                     <label className="form-check-label">Try On</label>
                                 </div>
                             </div>
