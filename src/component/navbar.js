@@ -33,8 +33,9 @@ class Navbar extends Component {
                         <div className='text_ ps-2'>
                             <label className='name'>Putita Techapat</label>
                             <label>Admin for ultima</label>
+                            
                         </div>
-                        <FontAwesomeIcon className='icon ps-3' icon="fa-solid fa-angle-down" />
+                        <FontAwesomeIcon  className='icon ps-3' icon="fa-solid fa-angle-down" />
                     </div>
                 </div>
             </div>

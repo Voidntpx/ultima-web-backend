@@ -7,6 +7,8 @@ import { fab } from '@fortawesome/free-brands-svg-icons'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
 import $ from 'jquery'
+import Skeleton from '@mui/material/Skeleton';
+import Stack from '@mui/material/Stack';
 
 library.add(fab, fas, far)
 
@@ -127,7 +129,20 @@ const CosmeticListing = () => {
                             )
                         } else {
                             return (
-                                <div className="loader">Loading...</div>
+                              
+                                // <div className="loader">Loading...</div>
+                                <Stack spacing={0}>
+                                    <br></br>
+                                    <br></br>
+                                    {/* For variant="text", adjust the height via font-size */}
+                                    <Skeleton variant="text" sx={{ fontSize: '5rem' }} />
+                                    <Skeleton variant="text" sx={{ fontSize: '5rem' }} />
+                                    <Skeleton variant="text" sx={{ fontSize: '5rem' }} />
+                                    <Skeleton variant="text" sx={{ fontSize: '5rem' }} />
+                                    <Skeleton variant="text" sx={{ fontSize: '5rem' }} />
+                                    <Skeleton variant="text" sx={{ fontSize: '5rem' }} />
+
+                                </Stack>
                             )
                         }
                     })()}
