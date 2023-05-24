@@ -16,6 +16,7 @@ import logoicon from './icon.png';
 import axios from 'axios';
 import Cookies from 'universal-cookie';
 import { useNavigate } from "react-router-dom";
+import jwt from 'jwt-decode'
 
 function Copyright(props) {
     return (
@@ -54,22 +55,30 @@ export default function Login() {
             body: JSON.stringify(userdata)
         }).then((res) => {
             // alert('Saved successfully.')
-          
-            
+
+
             return res.json()
         }).then((resp) => {
             // cosdatachange(resp)
             // console.log(resp['token'])
             // console.log(baseURL)
-        if(resp['token']){
-            console.log(resp['token'])
-            cookies.set('jwt', resp['token'], { path: '/' });
-            window.location.reload();
-            
-        }else{
-            console.log('fail to login')
-        }
-            
+            if (resp['token']) {
+                // console.log(resp['token'])
+
+                const user = jwt(resp['token']);
+                if (user['admin'] == 'SA' || user['admin'] == 'root') {
+                    cookies.set('jwt', resp['token'], { path: '/' });
+                    window.location.reload();
+                }
+                else{
+                    alert('Your account are unable to access.')
+                }
+
+
+            } else {
+                alert('Login fail please check your email or password.')
+            }
+
 
         }).catch((err) => {
             console.log(err.message)

@@ -7,6 +7,7 @@ import { fas } from '@fortawesome/free-solid-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
 import { Link, useNavigate } from "react-router-dom";
 import React, { Component } from 'react'
+import MenuListComposition from './menu';
 
 library.add(fab, fas, far)
 
@@ -33,8 +34,10 @@ class Navbar extends Component {
                         <div className='text_ ps-2'>
                             <label className='name'>Putita Techapat</label>
                             <label>Admin for ultima</label>
+                            
                         </div>
-                        <FontAwesomeIcon className='icon ps-3' icon="fa-solid fa-angle-down" />
+                        {/* <FontAwesomeIcon  className='icon ps-3' icon="fa-solid fa-angle-down" /> */}
+                        <MenuListComposition/>
                     </div>
                 </div>
             </div>

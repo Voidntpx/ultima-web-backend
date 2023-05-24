@@ -127,7 +127,9 @@ const CosmeticListing = () => {
                             )
                         } else {
                             return (
+                              
                                 <div className="loader">Loading...</div>
+                              
                             )
                         }
                     })()}
