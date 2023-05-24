@@ -16,6 +16,7 @@ import Cookies from 'universal-cookie';
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
+import UserListing from './UserManagement';
 // import { getAnalytics } from "firebase/analytics";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -50,10 +51,12 @@ function App() {
             <div className='content'>
               <div className='navbar-left'>
                 <Link to="cosmetic/create" style={{textDecoration: 'none'}}><div className='btn-add'>Add New Product</div></Link>
+                <Link to="/">
                 <div className='navbar-text active pt-4 mt-4'>
                   <img src={require('./assets/img/cos-active.png')} />
                   <label>Cosmetics</label>
                 </div>
+                </Link>
                 <div className='navbar-text'>
                   <img src={require('./assets/img/skin.png')} />
                   <label>Skincare</label>
@@ -62,6 +65,14 @@ function App() {
                   <img src={require('./assets/img/fragrance.png')} />
                   <label>Fragrance</label>
                 </div>
+
+                <hr></hr>
+                <Link to="user/management">
+                <div className='navbar-text'>
+                  <img src={require('./assets/img/fragrance.png')} />
+                  <label>User Management</label>
+                </div>
+              </Link>
                 {/* <Link to="cosmetic/create" className="btn btn-success">Add New (+)</Link> */}
               </div>
               <div className='content-right'>
@@ -71,6 +82,7 @@ function App() {
                   <Route path='/cosmetic/create' element={<CosmeticCreate />}></Route>
                   <Route path='/cosmetic/detail/:cosid' element={<CosmeticDetail />}></Route>
                   <Route path='/cosmetic/edit/:cosid' element={<CosmeticEdit />}></Route>
+                  <Route path='/user/management' element={<UserListing />}></Route>
                 </Routes>
               </div>
             </div>
