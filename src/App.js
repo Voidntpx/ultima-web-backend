@@ -18,6 +18,8 @@ import Cookies from 'universal-cookie';
 import { initializeApp } from "firebase/app";
 import UserListing from './UserManagement';
 import EditUser from './EditUser';
+import FragranceListing from './FragranceListing';
+import SkincareListing from './SkincareListing';
 // import { getAnalytics } from "firebase/analytics";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -59,14 +61,20 @@ function App() {
                   <label>Cosmetics</label>
                 </div>
                 </Link>
+
+                <Link to="/skincare">
                 <div className='navbar-text'>
                   <img src={require('./assets/img/skin.png')} />
                   <label>Skincare</label>
                 </div>
+                </Link>
+
+                <Link to="/fragrance">
                 <div className='navbar-text'>
                   <img src={require('./assets/img/fragrance.png')} />
                   <label>Fragrance</label>
                 </div>
+                </Link>
 
                 <hr></hr>
                 <Link to="user/management">
@@ -81,6 +89,8 @@ function App() {
                 <Routes>
                   {/* <Route path='/' element={<Login />}></Route> */}
                   <Route path='/' element={<CosmeticListing />}></Route>
+                  <Route path='/fragrance' element={<FragranceListing />}></Route>
+                  <Route path='/skincare' element={<SkincareListing />}></Route>
                   <Route path='/cosmetic/create' element={<CosmeticCreate />}></Route>
                   <Route path='/cosmetic/detail/:cosid' element={<CosmeticDetail />}></Route>
                   <Route path='/cosmetic/edit/:cosid' element={<CosmeticEdit />}></Route>
