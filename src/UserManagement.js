@@ -84,8 +84,10 @@ const UserListing = () => {
 
     const Removefunction = (id) => {
         if (window.confirm('Do you want to remove?')) {
-            fetch("http://localhost:8000/cosmetic/" + id, {
-                method: "DELETE"
+            console.log(id)
+            fetch("http://localhost:8000/user/" + id, {
+                method: "DELETE",
+                headers: { "content-type": "application/json", "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6ZmFsc2UsInVzZXJuYW1lIjoiRnJhbmsifQ.b2tDz1PyZBMF7IuelehsHvhmD8d2uZt2lrndTB7XMWc" },
             }).then((res) => {
                 alert('Removed successfully.')
                 window.location.reload();
@@ -94,6 +96,23 @@ const UserListing = () => {
             })
         }
     }
+
+    const Editfunction = (id) => {
+        navigate('/user/management/edit')
+            // alert('Edit successfully.'+id)
+            // console.log(id)
+        //     fetch("http://localhost:8000/user/" + id, {
+        //         method: "DELETE",
+        //         headers: { "content-type": "application/json", "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6ZmFsc2UsInVzZXJuYW1lIjoiRnJhbmsifQ.b2tDz1PyZBMF7IuelehsHvhmD8d2uZt2lrndTB7XMWc" },
+        //     }).then((res) => {
+        //         alert('Removed successfully.')
+        //         window.location.reload();
+        //     }).catch((err) => {
+        //         console.log(err.message)
+        //     })
+        // }
+    
+}
 
     const changeAdmin = (id) => {
         // console.log(id)
@@ -264,7 +283,11 @@ const UserListing = () => {
                                                                     {/* <FontAwesomeIcon className="icon trash" onClick={() => { LoadEdit(item.id) }} icon="fa-regular fa-pen-to-square" />   */}
                                                                     {item.admin == "root" ? <></>
                                                                         :
-                                                                        <FontAwesomeIcon className="icon trash" onClick={() => { Removefunction(item.Id) }} icon="fa-regular fa-trash-can" />
+                                                                        <>
+                                                                            <FontAwesomeIcon className="icon trash" onClick={() => { Editfunction(item.id) }} icon="fa-solid fa-user-pen" />
+                                                                            <>&ensp;</>
+                                                                            <FontAwesomeIcon className="icon trash" onClick={() => { Removefunction(item.id) }} icon="fa-regular fa-trash-can" />
+                                                                        </>
                                                                     }
                                                                 </div>
                                                             </td>

@@ -17,6 +17,7 @@ import Cookies from 'universal-cookie';
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import UserListing from './UserManagement';
+import EditUser from './EditUser';
 // import { getAnalytics } from "firebase/analytics";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -83,6 +84,7 @@ function App() {
                   <Route path='/cosmetic/detail/:cosid' element={<CosmeticDetail />}></Route>
                   <Route path='/cosmetic/edit/:cosid' element={<CosmeticEdit />}></Route>
                   <Route path='/user/management' element={<UserListing />}></Route>
+                  <Route path='/user/management/edit' element={<EditUser/>}></Route>
                 </Routes>
               </div>
             </div>
