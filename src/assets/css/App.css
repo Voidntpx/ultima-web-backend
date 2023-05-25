@@ -5,12 +5,14 @@
   color: #0B1F4F; }
   .App img {
     width: 100%; }
-  .App input {
-    border: 0;
+  .App input[type=text], .App textarea {
+    border: 2px solid #e2e2e2;
     outline: 0;
-    padding: 1.2rem 0; }
-  .App input:focus {
-    outline: none !important; }
+    padding: 1.2rem 1rem; }
+  .App input[type=text]:focus, .App textarea:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    border: 2px solid #3461BF; }
   .App .title {
     font-size: 1.8rem;
     font-weight: 700;
@@ -62,7 +64,7 @@
 .content {
   width: 100vw;
   display: flex;
-  height: calc(100vh); }
+  height: calc(100vh - 100.59px); }
   .content .navbar-left {
     flex: 1 1 20%;
     background-color: #3461BF;
@@ -94,10 +96,25 @@
         height: 28px;
         margin-right: 0.8rem; }
   .content-right {
-    flex: 1 1 80%; }
+    flex: 1 1 80%;
+    height: 100%;
+    overflow: hidden; }
 
 .cosmetic-content .fa-list-ul {
   font-size: 1.8rem; }
+
+.cosmetic-content .scorll {
+  height: 100%;
+  height: calc(100% - 210.55px); }
+
+.cosmetic-content .card-body {
+  height: 100%;
+  overflow: scroll; }
+  .cosmetic-content .card-body .box {
+    height: 50px; }
+
+.cosmetic-content .card-title {
+  --animate-delay: 0.5s; }
 
 .cosmetic-content .table-cosmetic {
   border: none; }
@@ -110,7 +127,8 @@
     .cosmetic-content .table-cosmetic thead tr {
       border-color: transparent; }
     .cosmetic-content .table-cosmetic thead td {
-      vertical-align: middle; }
+      vertical-align: middle;
+      padding-top: 0; }
   .cosmetic-content .table-cosmetic tbody tr {
     border-width: 0 !important;
     color: #0B1F4F;
@@ -149,18 +167,46 @@
         .cosmetic-content .table-cosmetic tbody tr td .icon.trash {
           color: #0B1F4F; }
 
-.create-cosmetic-card {
-  margin: 1rem 9rem;
-  border: none !important;
-  background-color: #F9F9F9 !important;
-  padding: 2rem;
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: #A2ACBC;
-  border-radius: 2rem !important; }
-
-.create-cosmetic p {
-  padding: 0 10rem; }
+.create-cosmetic {
+  height: 100%;
+  overflow: scroll; }
+  .create-cosmetic-card {
+    margin: 0 9rem;
+    border: none !important;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #9d9d9d;
+    border-radius: 2rem !important; }
+  .create-cosmetic p {
+    padding: 0 10rem; }
+  .create-cosmetic .tryon {
+    border-radius: 1000px; }
+  .create-cosmetic .form-switch .form-check-input {
+    height: 2.2rem;
+    width: 4.2rem !important;
+    border: 2px solid #c5c2c2; }
+    .create-cosmetic .form-switch .form-check-input:focus {
+      outline: none !important;
+      box-shadow: none !important; }
+  .create-cosmetic .input-cos-img {
+    display: none;
+    height: 0px;
+    line-height: 0; }
+  .create-cosmetic .preview-images .color-img {
+    height: 4rem;
+    width: 4rem;
+    border-radius: 1000px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center; }
+  .create-cosmetic .btn-color-img {
+    font-size: 2rem;
+    height: 4rem;
+    width: 4rem;
+    border-radius: 1000px;
+    display: flex;
+    justify-content: center;
+    margin: 0; }
 
 .total-box {
   display: flex;
@@ -232,7 +278,6 @@ input:focus {
 .first-division {
   display: flex;
   flex-direction: column;
-  margin: 0 5px 0.5rem 0;
   width: 100%; }
 
 button {

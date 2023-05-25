@@ -29,7 +29,8 @@ const firebaseConfig = {
   storageBucket: "ultima-b32f3.appspot.com",
   messagingSenderId: "889329332221",
   appId: "1:889329332221:web:4ac563814d6a18aba7f394",
-  measurementId: "G-Y7B7DV2CLL"
+  measurementId: "G-Y7B7DV2CLL",
+  storageBucket: 'gs://ultima-b32f3.appspot.com'
 };
 
 

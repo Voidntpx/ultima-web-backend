@@ -8,8 +8,16 @@
         width: 100%;
     }
     color: $darkblue;
-    input {border:0;outline:0;padding: 1.2rem 0;}
-    input:focus {outline:none!important;}
+    input[type=text],textarea {
+        border:2px solid #e2e2e2;
+        outline:0;
+        padding: 1.2rem 1rem;
+    }
+    input[type=text]:focus, textarea:focus {
+        outline:none!important;
+        box-shadow: none !important;
+        border:2px solid $blue;
+    }
     .title {
         font-size: 1.8rem;
         font-weight: 700;
@@ -73,7 +81,7 @@
 .content {
     width: 100vw;
     display: flex;
-    height: calc(100vh);
+    height: calc(100vh - 100.59px);
     .navbar-left {
         flex: 1 1 20%;
         background-color: $blue;
@@ -111,12 +119,28 @@
     }
     &-right {
         flex: 1 1 80%;
+        height: 100%;
+        overflow: hidden;
     }
 }
 
 .cosmetic-content {
     .fa-list-ul {
         font-size: 1.8rem;
+    }
+    .scorll {
+        height: 100%;
+        height: calc(100% - 210.55px);
+    }
+    .card-body {
+        height: 100%;
+        overflow: scroll;
+        .box {
+            height: 50px;
+        }
+    }
+    .card-title {
+        --animate-delay: 0.5s;
     }
     .table-cosmetic {
         border: none;
@@ -131,6 +155,7 @@
             }
             td {
                 vertical-align:middle;
+                padding-top: 0;
             }
         }
         tbody {
@@ -191,18 +216,60 @@
 }
 
 .create-cosmetic {
+    height: 100%;
+    overflow: scroll;
     &-card {
-        margin: 1rem 9rem;
+        margin: 0 9rem;
         border: none !important;
-        background-color: $white !important;
-        padding: 2rem;
+        // background-color: $white !important;
+        // padding: 2rem;
         font-size: 0.8rem;
-        font-weight: 600;
-        color: $gray;
+        font-weight: 700;
+        color: #9d9d9d;
         border-radius: 2rem !important;
     }
     p {
         padding: 0 10rem;
+    }
+    .tryon {
+        border-radius: 1000px;
+    }
+    .form-switch {
+        .form-check-input {
+            height: 2.2rem;
+            width: 4.2rem !important;
+            border:2px solid #c5c2c2;
+            &:focus {
+                outline:none!important;
+                box-shadow: none !important;
+            }
+        
+        }
+
+    }
+    .input-cos-img {
+        display: none;
+        height: 0px;
+        line-height: 0;
+    }
+    .preview-images {
+        .color-img {
+            height: 4rem;
+            width: 4rem;
+            border-radius: 1000px;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+    }
+    .btn-color-img {
+        font-size: 2rem;
+        height: 4rem;
+        width: 4rem;
+        border-radius: 1000px;
+        display: flex;
+        justify-content: center;
+        margin: 0;
     }
 
 }
@@ -298,7 +365,6 @@
   .first-division {
     display: flex;
     flex-direction: column;
-    margin: 0 5px 0.5rem 0;
     width: 100%;
   }
   
