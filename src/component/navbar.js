@@ -43,7 +43,7 @@ class Navbar extends Component {
                     <div className='account'>
                         <FontAwesomeIcon className='icon g' icon="fa-regular fa-circle-question" />
                         <FontAwesomeIcon className='icon g ps-3 pe-4' icon="fa-solid fa-gear" />
-                        <div className='profile-pic'></div>
+                        {/* <div className='profile-pic'></div> */}
                         <div className='text_ ps-2'>
                             <label className='name'>{decoded['f_name']} {decoded['l_name']}</label>
                             <label>Admin Role: {decoded['admin']}</label>
