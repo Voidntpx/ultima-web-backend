@@ -28,7 +28,7 @@ const FragranceListing = () => {
     }
     const Removefunction = (id) => {
         if (window.confirm('Do you want to remove?')) {
-            fetch("http://localhost:8000/fragrance/" + id, {
+            fetch("https://apiservice-d5qtigtmea-as.a.run.app/fragrance/" + id, {
                 method: "DELETE"
             }).then((res) => {
                 alert('Removed successfully.')
@@ -49,7 +49,7 @@ const FragranceListing = () => {
 
 
     useEffect(() => {
-        fetch("http://localhost:8000/fragrance/checkall", {
+        fetch("https://apiservice-d5qtigtmea-as.a.run.app/fragrance/checkall", {
             headers: { "content-type": "application/json", "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6ZmFsc2UsInVzZXJuYW1lIjoiRnJhbmsifQ.b2tDz1PyZBMF7IuelehsHvhmD8d2uZt2lrndTB7XMWc" },
         }).then((res) => {
             return res.json();

@@ -20,6 +20,7 @@ import UserListing from './UserManagement';
 import EditUser from './EditUser';
 import FragranceListing from './FragranceListing';
 import SkincareListing from './SkincareListing';
+import CloudMessaging from './CloudMessaging';
 // import { getAnalytics } from "firebase/analytics";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -79,10 +80,16 @@ function App() {
                 <hr></hr>
                 <Link to="user/management">
                 <div className='navbar-text'>
-                  <img src={require('./assets/img/fragrance.png')} />
-                  <label>User Management</label>
+                  {/* <img src={require('./assets/img/fragrance.png')} /> */}
+                  <label>Admin Management</label>
                 </div>
               </Link>
+                <Link to="push-notification">
+                  <div className='navbar-text'>
+                    {/* <img src={require('./assets/img/fragrance.png')} /> */}
+                    <label>Cloud Messaging</label>
+                  </div>
+                </Link>
                 {/* <Link to="cosmetic/create" className="btn btn-success">Add New (+)</Link> */}
               </div>
               <div className='content-right'>
@@ -96,6 +103,7 @@ function App() {
                   <Route path='/cosmetic/edit/:cosid' element={<CosmeticEdit />}></Route>
                   <Route path='/user/management' element={<UserListing />}></Route>
                   <Route path='/user/management/edit' element={<EditUser/>}></Route>
+                  <Route path='/push-notification' element={<CloudMessaging />}></Route>
                 </Routes>
               </div>
             </div>

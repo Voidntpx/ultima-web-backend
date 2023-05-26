@@ -85,7 +85,7 @@ const UserListing = () => {
     const Removefunction = (id) => {
         if (window.confirm('Do you want to remove?')) {
             console.log(id)
-            fetch("http://localhost:8000/user/" + id, {
+            fetch("https://apiservice-d5qtigtmea-as.a.run.app/user/" + id, {
                 method: "DELETE",
                 headers: { "content-type": "application/json", "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6ZmFsc2UsInVzZXJuYW1lIjoiRnJhbmsifQ.b2tDz1PyZBMF7IuelehsHvhmD8d2uZt2lrndTB7XMWc" },
             }).then((res) => {
@@ -116,7 +116,7 @@ const UserListing = () => {
 
     const changeAdmin = (id) => {
         // console.log(id)
-        fetch("http://localhost:8000/user/" + id, {
+        fetch("https://apiservice-d5qtigtmea-as.a.run.app/user/" + id, {
             method: "GET",
             headers: { "content-type": "application/json", "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6ZmFsc2UsInVzZXJuYW1lIjoiRnJhbmsifQ.b2tDz1PyZBMF7IuelehsHvhmD8d2uZt2lrndTB7XMWc" },
         }).then((res) => {
@@ -128,7 +128,7 @@ const UserListing = () => {
                 const admin_data = {
                     "admin": "SA"
                 }
-                fetch("http://localhost:8000/user/" + id, {
+                fetch("https://apiservice-d5qtigtmea-as.a.run.app/user/" + id, {
                     method: "PUT",
                     headers: { "content-type": "application/json", "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6ZmFsc2UsInVzZXJuYW1lIjoiRnJhbmsifQ.b2tDz1PyZBMF7IuelehsHvhmD8d2uZt2lrndTB7XMWc" },
                     body: JSON.stringify(admin_data)
@@ -143,7 +143,7 @@ const UserListing = () => {
                 const admin_data = {
                     "admin": "NA"
                 }
-                fetch("http://localhost:8000/user/" + id, {
+                fetch("https://apiservice-d5qtigtmea-as.a.run.app/user/" + id, {
                     method: "PUT",
                     headers: { "content-type": "application/json", "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6ZmFsc2UsInVzZXJuYW1lIjoiRnJhbmsifQ.b2tDz1PyZBMF7IuelehsHvhmD8d2uZt2lrndTB7XMWc" },
                     body: JSON.stringify(admin_data)
@@ -185,7 +185,7 @@ const UserListing = () => {
 
 
     useEffect(() => {
-        fetch("http://localhost:8000/user/ultima", {
+        fetch("https://apiservice-d5qtigtmea-as.a.run.app/user/ultima", {
             headers: { "content-type": "application/json", "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6ZmFsc2UsInVzZXJuYW1lIjoiRnJhbmsifQ.b2tDz1PyZBMF7IuelehsHvhmD8d2uZt2lrndTB7XMWc" },
         }).then((res) => {
             return res.json();

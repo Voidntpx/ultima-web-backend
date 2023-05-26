@@ -49,7 +49,7 @@ const SkincareListing = () => {
 
 
     useEffect(() => {
-        fetch("http://localhost:8000/skincare/checkall",{
+        fetch("https://apiservice-d5qtigtmea-as.a.run.app/skincare/checkall",{
             headers: { "content-type": "application/json", "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6ZmFsc2UsInVzZXJuYW1lIjoiRnJhbmsifQ.b2tDz1PyZBMF7IuelehsHvhmD8d2uZt2lrndTB7XMWc" },
         }).then((res) => {
             return res.json();
