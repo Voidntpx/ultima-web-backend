@@ -8,11 +8,18 @@
   .App input[type=text], .App textarea {
     border: 2px solid #e2e2e2;
     outline: 0;
-    padding: 1.2rem 1rem; }
+    padding: 1.45rem 1rem;
+    border-radius: 0.375rem;
+    color: #9d9d9d;
+    font-size: 0.98rem; }
+  .App input, .App textarea {
+    font-family: "Noto Sans Thai", sans-serif;
+    font-weight: 500; }
   .App input[type=text]:focus, .App textarea:focus {
     outline: none !important;
     box-shadow: none !important;
-    border: 2px solid #3461BF; }
+    border: 2px solid #3461BF;
+    border-radius: 0.375rem; }
   .App .title {
     font-size: 1.8rem;
     font-weight: 700;
@@ -69,6 +76,10 @@
     flex: 1 1 20%;
     background-color: #3461BF;
     border-top-right-radius: 5rem; }
+    .content .navbar-left_wraper {
+      transition: .3s; }
+    .content .navbar-left a {
+      cursor: default; }
     .content .navbar-left .btn-add {
       background-color: white;
       text-align: center;
@@ -95,6 +106,8 @@
         width: 28px;
         height: 28px;
         margin-right: 0.8rem; }
+      .content .navbar-left .navbar-text label {
+        cursor: pointer; }
   .content-right {
     flex: 1 1 80%;
     height: 100%;
@@ -150,6 +163,7 @@
         display: flex;
         color: white;
         justify-content: center;
+        background-color: #4D49FF;
         border-radius: 100px;
         margin: 0 auto; }
         .cosmetic-content .table-cosmetic tbody tr td .cate.eyeshadow {
@@ -166,6 +180,44 @@
           color: red; }
         .cosmetic-content .table-cosmetic tbody tr td .icon.trash {
           color: #0B1F4F; }
+      .cosmetic-content .table-cosmetic tbody tr td .fa-chevron-down {
+        font-size: 1.4rem; }
+  .cosmetic-content .table-cosmetic tbody .cos-detail {
+    border: 2px solid #A2ACBC;
+    padding: 2rem;
+    border-radius: 1rem; }
+    .cosmetic-content .table-cosmetic tbody .cos-detail .img-color {
+      height: 4rem;
+      width: 4rem;
+      border-radius: 1000px;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center; }
+    .cosmetic-content .table-cosmetic tbody .cos-detail .img-cos {
+      height: 6rem;
+      width: 6rem;
+      border-radius: 2rem;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center; }
+    .cosmetic-content .table-cosmetic tbody .cos-detail label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #9d9d9d;
+      padding-bottom: 0.5rem; }
+    .cosmetic-content .table-cosmetic tbody .cos-detail .ing-tag {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row; }
+      .cosmetic-content .table-cosmetic tbody .cos-detail .ing-tag_wrapper {
+        background-color: #4D49FF;
+        padding: 0.5rem 1rem;
+        border-radius: 1000px;
+        color: white;
+        margin-top: 0.5rem; }
+        .cosmetic-content .table-cosmetic tbody .cos-detail .ing-tag_wrapper p {
+          white-space: nowrap;
+          margin-bottom: 0; }
 
 .create-cosmetic {
   height: 100%;
