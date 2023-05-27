@@ -23,6 +23,7 @@ import FragranceListing from './FragranceListing';
 import SkincareListing from './SkincareListing';
 import CloudMessaging from './CloudMessaging';
 import RewardListing from './RewardListing'
+import FragranceCreate from './FragranceCreate';
 // import { getAnalytics } from "firebase/analytics";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -55,7 +56,7 @@ function App() {
 
 
 const CheckRoute = () => {
-  const location = useLocation();
+  const location = useLocation();  
 
   useEffect(() => {
     
@@ -68,6 +69,7 @@ const CheckRoute = () => {
   const add_btn = path == '/' ? <Link to="cosmetic/create" style={{textDecoration: 'none'}}><div className='btn-add'>Add New Cosmetic</div></Link>
                 : path == '/skincare' ? <Link to="skincare/create" style={{textDecoration: 'none'}}><div className='btn-add'>Add New Skincare</div></Link>
                 : path == '/fragrance' ? <Link to="fragrance/create" style={{textDecoration: 'none'}}><div className='btn-add'>Add New Fragrance</div></Link>
+        : path == '/reward' ? <Link to="reward/create" style={{ textDecoration: 'none' }}><div className='btn-add'>Add New Reward</div></Link>
                 : "";
 
   return (
@@ -130,13 +132,19 @@ const CheckRoute = () => {
                   <Route path='/' element={<CosmeticListing />}>
                   </Route>
                   <Route path='/fragrance' element={<FragranceListing />}></Route>
+                  <Route path='/fragrance/create' element={<FragranceCreate />}></Route>
+
                   <Route path='/skincare' element={<SkincareListing />}></Route>
+
                   <Route path='/cosmetic/create' element={<CosmeticCreate />}></Route>
                   <Route path='/cosmetic/detail/:cosid' element={<CosmeticDetail />}></Route>
                   <Route path='/cosmetic/edit/:cosid' element={<CosmeticEdit />}></Route>
+
                   <Route path='/user/management' element={<UserListing />}></Route>
                   <Route path='/user/management/edit' element={<EditUser/>}></Route>
+
                   <Route path='/push-notification' element={<CloudMessaging />}></Route>
+
                   <Route path='/reward' element={<RewardListing />}></Route>
                 </Routes>
               </div>
