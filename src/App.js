@@ -21,6 +21,7 @@ import EditUser from './EditUser';
 import FragranceListing from './FragranceListing';
 import SkincareListing from './SkincareListing';
 import CloudMessaging from './CloudMessaging';
+import RewardListing from './RewardListing'
 // import { getAnalytics } from "firebase/analytics";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -90,6 +91,13 @@ function App() {
                     <label>Cloud Messaging</label>
                   </div>
                 </Link>
+
+                <Link to="reward">
+                  <div className='navbar-text'>
+                    {/* <img src={require('./assets/img/fragrance.png')} /> */}
+                    <label>Reward Management</label>
+                  </div>
+                </Link>
                 {/* <Link to="cosmetic/create" className="btn btn-success">Add New (+)</Link> */}
               </div>
               <div className='content-right'>
@@ -104,6 +112,7 @@ function App() {
                   <Route path='/user/management' element={<UserListing />}></Route>
                   <Route path='/user/management/edit' element={<EditUser/>}></Route>
                   <Route path='/push-notification' element={<CloudMessaging />}></Route>
+                  <Route path='/reward' element={<RewardListing />}></Route>
                 </Routes>
               </div>
             </div>
