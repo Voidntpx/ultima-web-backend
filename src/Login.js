@@ -49,7 +49,7 @@ export default function Login() {
             "password": data.get('password'),
         };
         console.log(userdata)
-        fetch("http://localhost:8000/user/login", {
+        fetch("https://apiservice-d5qtigtmea-as.a.run.app/user/login", {
             method: "POST",
             headers: { "content-type": "application/json" },
             body: JSON.stringify(userdata)

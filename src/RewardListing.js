@@ -29,7 +29,7 @@ const RewardListing = () => {
     const Removefunction = (id) => {
         if (window.confirm('Do you want to remove?')) {
             console.log(id)
-            fetch("http://localhost:8000/reward/" + id, {
+            fetch("https://apiservice-d5qtigtmea-as.a.run.app/reward/" + id, {
                 method: "DELETE",
                 headers: { "content-type": "application/json", "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6ZmFsc2UsInVzZXJuYW1lIjoiRnJhbmsifQ.b2tDz1PyZBMF7IuelehsHvhmD8d2uZt2lrndTB7XMWc" },
             }).then((res) => {
@@ -51,7 +51,7 @@ const RewardListing = () => {
 
 
     useEffect(() => {
-        fetch("http://localhost:8000/reward/checkall", {
+        fetch("https://apiservice-d5qtigtmea-as.a.run.app/reward/checkall", {
             headers: { "content-type": "application/json", "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6ZmFsc2UsInVzZXJuYW1lIjoiRnJhbmsifQ.b2tDz1PyZBMF7IuelehsHvhmD8d2uZt2lrndTB7XMWc" },
         }).then((res) => {
             return res.json();
