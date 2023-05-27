@@ -179,12 +179,13 @@ const CosmeticCreate = (props) => {
     const [cos_color_img_list, setCos_color_img_list] = useState([{ service: "" }]);
     const fileInputRef = useRef(null);
     const [previewImages, setPreviewImages] = useState([]);
+    const [color_img_disabled, setColorDisabled] = useState(true);
     // console.log(cos_color_img_list);
     console.log(previewImages);
 
     useEffect(() => {
         if (fileInputRef.current) {
-          fileInputRef.current.click();
+         fileInputRef.current.click();
         }
       }, [cos_color_img_list],[previewImages]);
 
@@ -222,6 +223,7 @@ const CosmeticCreate = (props) => {
     }
 
     const handleCos_color_imgAdd = () => {
+        setColorDisabled(false);
         setCos_color_img_list([...cos_color_img_list, { service: "" }]);
     };
 
@@ -380,6 +382,7 @@ const CosmeticCreate = (props) => {
                                             ref={fileInputRef}
                                             value={singleService.service}
                                             onChange={(e) => handleCos_color_imgChange(e, index)}
+                                            disabled={color_img_disabled}
                                         />
                                         {/* <input className="d-none" accept="image/*" type='file' id="imgInp" /> */}
                                         <div className='d-flex align-items-center'>

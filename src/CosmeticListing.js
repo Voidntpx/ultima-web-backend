@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -11,18 +11,131 @@ import 'animate.css';
 
 library.add(fab, fas, far)
 
+const LoadDetail = ({ id }) => {
+    const [cosdata_detail, setcosdataDetail] = useState({});
+    const [ing, setIng] = useState([]);
+    // navigate("/cosmetic/detail/" + id);
+    useEffect(() => {
+        fetch("https://apiservice-d5qtigtmea-as.a.run.app/cosmetic/" + id).then((res) => {
+            // console.log(cosid)
+            return res.json();
+        }).then((resp) => {
+            setcosdataDetail(resp);
+            // console.log(resp);
+            // console.log(cosdata_detail);
+        }).catch((err) => {
+            console.log(err.message);
+        })
+
+        fetch("https://apiservice-d5qtigtmea-as.a.run.app/cosmetic/ingredient/" + id).then((res) => {
+            // console.log(cosid)
+            return res.json();
+        }).then((resp) => {
+            setIng(resp);
+            console.log(resp);
+            console.log(ing);
+        }).catch((err) => {
+            console.log(err.message);
+        })
+    }, [id]);
+
+    if (!cosdata_detail || !ing) {
+        return <div className="loader">Loading...</div>;
+    }
+
+    return (
+        <tr>
+            <td colSpan={6}>
+                <div className="w-100 cos-detail">
+                    {cosdata_detail.data &&
+                        cosdata_detail.data.map(item => (
+                            <div key={item.Id}>
+                                <label>Description</label>
+                                <textarea rows="5" type="text" className="w-100" value={item.cos_desc} disabled></textarea>
+                                {item.cos_color_img && (
+                                    <div className="pt-3">
+                                        <label>Color</label>
+                                        <div className="d-flex gap-3 pt-2">
+                                            {item.cos_color_img && item.cos_color_img.map((color_img, index) => (
+                                                <div className="img-color" key={index} style={{ backgroundImage: `url(${color_img})` }}></div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                )}
+                                {/* {item.cos_img && (
+                                    <div className="pt-3">
+                                        <label>Image</label>
+                                        <div className="d-flex gap-3 pt-2">
+                                            {item.cos_img && item.cos_img.map((cos_img, index) => (
+                                                <div className="img-cos" key={index} style={{ backgroundImage: `url(${cos_img})` }}></div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                )} */}
+                                {item.cos_tryon_name && (
+                                    <div className="d-flex gap-3 pt-4">
+                                        <div>
+                                            <label>Try-on Name</label>
+                                            <input type="text" value={item.cos_tryon_name} disabled></input>
+                                        </div>
+                                        <div>
+                                            <label>Try-on Color</label>
+                                            <input type="text" value={item.cos_tryon_color} disabled></input>
+                                        </div>
+
+                                    </div>
+                                )}
+                                {ing.data && (
+                                    <>
+                                        <label className="pt-4 pb-1">Ingredients</label>
+                                        <div className="ing-tag gap-2">
+                                            {ing.data.map((ings, index) => (
+                                                <React.Fragment key={index}>
+                                                    {ings.map((ing, index) => (
+                                                        <div className="ing-tag_wrapper">
+                                                            <p key={index}>{ing.name}</p>
+                                                        </div>
+                                                    ))}
+                                                </React.Fragment>
+
+                                            ))}
+                                        </div>
+
+                                    </>
+                                )}
+                                {item.l_link && item.l_link.map((e, index) => (
+                                    <div key={index}>
+                                        <label className="pt-4">Link to store</label>
+                                        <input type="text" value={e} disabled></input>
+                                    </div>
+                                ))}
+
+
+
+
+                            </div>
+                        ))
+                    }
+                </div>
+            </td>
+        </tr>
+    );
+};
+
 const CosmeticListing = () => {
     const [cosdata, cosdatachange] = useState(null);
+    const [selectedId, setSelectedId] = useState(null);
     const navigate = useNavigate();
     const check = (<FontAwesomeIcon className="icon check" icon="fa-regular fa-circle-check" />);
     const uncheck = (<FontAwesomeIcon className="icon uncheck" icon="fa-regular fa-circle-xmark" />);
     const total_cos = cosdata ? cosdata.data.length : 0;
     let delay = 0.5;
-    let delay__ ='';
-   
-    const LoadDetail = (id) => {
-        navigate("/cosmetic/detail/" + id);
-    }
+    let delay__ = '';
+
+    const handleLoadDetail = (id) => {
+        setSelectedId(id);
+    };
+
     const LoadEdit = (id) => {
         navigate("/cosmetic/edit/" + id);
     }
@@ -52,7 +165,7 @@ const CosmeticListing = () => {
         fetch("https://apiservice-d5qtigtmea-as.a.run.app/cosmetic/checkall").then((res) => {
             return res.json();
         }).then((resp) => {
-            console.log(resp)
+            // console.log(resp)
             cosdatachange(resp);
         }).catch((err) => {
             console.log(err.message);
@@ -90,7 +203,7 @@ const CosmeticListing = () => {
                                     <div className="px-4 mx-3">
                                         <table className="table table-cosmetic">
                                             <thead>
-                                                <tr className="animate__animated animate__fadeInUp animate__delay-1s" style={{'--animate-delay' : '0.5s'}}>
+                                                <tr className="animate__animated animate__fadeInUp animate__delay-1s" style={{ '--animate-delay': '0.5s' }}>
                                                     <td>Photo</td>
                                                     <td>Brand</td>
                                                     <td>Name</td>
@@ -103,28 +216,34 @@ const CosmeticListing = () => {
                                             <tbody>
                                                 {cosdata.data &&
                                                     cosdata.data.map(item => (
-                                                        delay+=.08,delay__=delay+'s',
-                                                        <tr key={item.Id} className="animate__animated animate__fadeInUp animate__delay-1s " style={{'--animate-delay' : delay__}}>
-                                                            {/* <td>{item.Id}</td> */}
-                                                            <td><img src={item.cos_img[0]} /></td>
-                                                            <td>{item.cos_brand}</td>
-                                                            <td className="name">{item.cos_name}</td>
-                                                            {/* <td>{item.cos_desc}</td> */}
+                                                        delay += .08, delay__ = delay + 's',
+                                                        <>
+                                                            <tr key={item.Id} className="animate__animated animate__fadeInUp animate__delay-1s " style={{ '--animate-delay': delay__ }}>
+                                                                {/* <td>{item.Id}</td> */}
+                                                                <td><img src={item.cos_img[0]} /></td>
+                                                                <td>{item.cos_brand}</td>
+                                                                <td className="name">{item.cos_name}</td>
+                                                                {/* <td>{item.cos_desc}</td> */}
 
-                                                            <td className="text-center">{item.cos_istryon == true ? check : uncheck}</td>
-                                                            <td className="text-center">
-                                                                <div className="cate" value={item.cos_cate}>{item.cos_cate}</div>
-                                                            </td>
-                                                            <td>
-                                                                {/* <a onClick={() => { LoadEdit(item.id) }} className="btn btn-success">Edit</a> */}
-                                                                {/* <a onClick={() => { Removefunction(item.Id) }} className="btn btn-danger">Remove</a>
+                                                                <td className="text-center">{item.cos_istryon == true ? check : uncheck}</td>
+                                                                <td className="text-center">
+                                                                    <div className="cate" value={item.cos_cate}>{item.cos_cate}</div>
+                                                                </td>
+                                                                <td>
+                                                                    {/* <a onClick={() => { LoadEdit(item.id) }} className="btn btn-success">Edit</a> */}
+                                                                    {/* <a onClick={() => { Removefunction(item.Id) }} className="btn btn-danger">Remove</a>
                                                             <a onClick={() => { LoadDetail(item.Id) }} className="btn btn-primary">Details</a>  */}
-                                                                <div className="text-center">
-                                                                    {/* <FontAwesomeIcon className="icon trash" onClick={() => { LoadEdit(item.id) }} icon="fa-regular fa-pen-to-square" />   */}
-                                                                    <FontAwesomeIcon className="icon trash" onClick={() => { Removefunction(item.Id) }} icon="fa-regular fa-trash-can" />
-                                                                </div>
-                                                            </td>
-                                                        </tr>
+                                                                    <div className="text-center d-flex align-items-center justify-content-center gap-4">
+                                                                        {/* <FontAwesomeIcon className="icon trash" onClick={() => { LoadEdit(item.id) }} icon="fa-regular fa-pen-to-square" />   */}
+                                                                        <FontAwesomeIcon className="icon trash" onClick={() => { Removefunction(item.Id) }} icon="fa-regular fa-trash-can" />
+                                                                        <FontAwesomeIcon onClick={() => handleLoadDetail(item.Id)} icon="fa-solid fa-chevron-down" />
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            {selectedId === item.Id && <LoadDetail id={selectedId} />}
+
+
+                                                        </>
                                                     ))
                                                 }
                                             </tbody>
@@ -136,9 +255,9 @@ const CosmeticListing = () => {
                             )
                         } else {
                             return (
-                              
+
                                 <div className="loader">Loading...</div>
-                              
+
                             )
                         }
                     })()}

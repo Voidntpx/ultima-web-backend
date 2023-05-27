@@ -1,5 +1,5 @@
 import './assets/css/App.css';
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom'
 import CosmeticListing from './CosmeticListing';
 import CosmeticCreate from './CosmeticCreate';
 import CosmeticDetail from './CosmeticDetail';
@@ -13,6 +13,7 @@ import { fas } from '@fortawesome/free-solid-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
 import { Link, useNavigate } from "react-router-dom";
 import Cookies from 'universal-cookie';
+import React, { useEffect,useState } from 'react';
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
@@ -46,7 +47,28 @@ const cookies = new Cookies();
 library.add(fab, fas, far)
 const token = cookies.get('jwt')
 
+
+
+
 function App() {
+  const [path, setPath] = useState("");
+
+
+const CheckRoute = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    
+    setPath(location.pathname);
+    console.log('Current Pathname:', path);
+  }, [location.pathname]);
+
+  return null;
+};
+  const add_btn = path == '/' ? <Link to="cosmetic/create" style={{textDecoration: 'none'}}><div className='btn-add'>Add New Cosmetic</div></Link>
+                : path == '/skincare' ? <Link to="skincare/create" style={{textDecoration: 'none'}}><div className='btn-add'>Add New Skincare</div></Link>
+                : path == '/fragrance' ? <Link to="fragrance/create" style={{textDecoration: 'none'}}><div className='btn-add'>Add New Fragrance</div></Link>
+                : "";
 
   return (
     <div>
@@ -56,37 +78,38 @@ function App() {
             <Navbar />
             <div className='content'>
               <div className='navbar-left'>
-                <Link to="cosmetic/create" style={{textDecoration: 'none'}}><div className='btn-add'>Add New Product</div></Link>
+                {add_btn}
+                <div className='navbar-left_wraper'>
                 <Link to="/">
-                <div className='navbar-text active pt-4 mt-4'>
-                  <img src={require('./assets/img/cos-active.png')} />
+                <div className={`navbar-text ${path == '/' ? 'active' : ''} pt-4 mt-4`}>
+                  <img src={require(`./assets/img/cos${path == '/' ? '-active' : ''}.png`)} />
                   <label>Cosmetics</label>
                 </div>
                 </Link>
 
                 <Link to="/skincare">
-                <div className='navbar-text'>
-                  <img src={require('./assets/img/skin.png')} />
+                <div className={`navbar-text ${path == '/skincare' ? 'active' : ''}`}>
+                  <img src={require(`./assets/img/skin${path == '/skincare' ? '-active' : ''}.png`)} />
                   <label>Skincare</label>
                 </div>
                 </Link>
 
                 <Link to="/fragrance">
-                <div className='navbar-text'>
-                  <img src={require('./assets/img/fragrance.png')} />
+                <div className={`navbar-text ${path == '/fragrance' ? 'active' : ''}`}>
+                  <img src={require(`./assets/img/fragrance${path == '/fragrance' ? '-active' : ''}.png`)} />
                   <label>Fragrance</label>
                 </div>
                 </Link>
 
                 <hr></hr>
                 <Link to="user/management">
-                <div className='navbar-text'>
+                <div className={`navbar-text ${path == '/user/management' ? 'active' : ''}`}>
                   {/* <img src={require('./assets/img/fragrance.png')} /> */}
                   <label>Admin Management</label>
                 </div>
               </Link>
                 <Link to="push-notification">
-                  <div className='navbar-text'>
+                  <div className={`navbar-text ${path == '/push-notification' ? 'active' : ''}`}>
                     {/* <img src={require('./assets/img/fragrance.png')} /> */}
                     <label>Cloud Messaging</label>
                   </div>
@@ -99,11 +122,13 @@ function App() {
                   </div>
                 </Link>
                 {/* <Link to="cosmetic/create" className="btn btn-success">Add New (+)</Link> */}
+                </div>
               </div>
               <div className='content-right'>
                 <Routes>
-                  {/* <Route path='/' element={<Login />}></Route> */}
-                  <Route path='/' element={<CosmeticListing />}></Route>
+                  {/* {CheckRoute} */}
+                  <Route path='/' element={<CosmeticListing />}>
+                  </Route>
                   <Route path='/fragrance' element={<FragranceListing />}></Route>
                   <Route path='/skincare' element={<SkincareListing />}></Route>
                   <Route path='/cosmetic/create' element={<CosmeticCreate />}></Route>
@@ -115,6 +140,7 @@ function App() {
                   <Route path='/reward' element={<RewardListing />}></Route>
                 </Routes>
               </div>
+              <CheckRoute />
             </div>
           </div>
         </BrowserRouter>
