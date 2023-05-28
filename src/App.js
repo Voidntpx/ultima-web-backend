@@ -120,7 +120,7 @@ const CheckRoute = () => {
                 </Link>
 
                 <Link to="reward">
-                  <div className='navbar-text'>
+                    <div className={`navbar-text ${path == '/reward' ? 'active' : ''}`}>
                     {/* <img src={require('./assets/img/fragrance.png')} /> */}
                     <label>Reward Management</label>
                   </div>

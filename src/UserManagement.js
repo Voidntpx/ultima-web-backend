@@ -115,16 +115,16 @@ const UserListing = () => {
 }
 
     const changeAdmin = (id) => {
-        // console.log(id)
+        console.log(id)
         fetch("https://apiservice-d5qtigtmea-as.a.run.app/user/" + id, {
             method: "GET",
             headers: { "content-type": "application/json", "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6ZmFsc2UsInVzZXJuYW1lIjoiRnJhbmsifQ.b2tDz1PyZBMF7IuelehsHvhmD8d2uZt2lrndTB7XMWc" },
         }).then((res) => {
-            // alert('Change successfully.')
+            alert('Change successfully.')
             return res.json();
         }).then((resp) => {
-            // console.log(resp['data']['data']['admin'])
-            if (resp['data']['data']['admin'] == 'NA') {
+            console.log(resp['data']['admin'])
+            if (resp['data']['admin'] == 'NA') {
                 const admin_data = {
                     "admin": "SA"
                 }

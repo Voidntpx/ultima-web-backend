@@ -33,26 +33,29 @@ const CloudMessaging = () => {
     const check = (<FontAwesomeIcon className="icon check" icon="fa-regular fa-circle-check" />);
     const uncheck = (<FontAwesomeIcon className="icon uncheck" icon="fa-regular fa-circle-xmark" />);
     const total_cos = cosdata ? cosdata.data.data.length : 0;
-    
+
 
     const [title, titlechange] = useState("");
     const [validation, valchange] = useState(false);
 
     const [body, bodychange] = useState("");
     const [validation2, valchange2] = useState(false);
-  
+
 
     const handlesubmit = async (e) => {
         e.preventDefault();
-        // alert(title+' : '+body);
+        alert(title + ' : ' + body);
         const message_data = {
             "title": title,
             "body": body
-        } 
-        
+        }
+
         fetch("https://apiservice-d5qtigtmea-as.a.run.app/notification/sendall", {
-            method: "POST",    
-            headers: { "content-type": "application/json", "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6ZmFsc2UsInVzZXJuYW1lIjoiRnJhbmsifQ.b2tDz1PyZBMF7IuelehsHvhmD8d2uZt2lrndTB7XMWc" },
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+                "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6ZmFsc2UsInVzZXJuYW1lIjoiRnJhbmsifQ.b2tDz1PyZBMF7IuelehsHvhmD8d2uZt2lrndTB7XMWc"
+            },
             body: JSON.stringify(message_data)
         }).then((res) => {
             return res.json();
@@ -63,7 +66,7 @@ const CloudMessaging = () => {
             console.log(err.message);
         })
 
-        
+
 
     }
 
@@ -90,7 +93,7 @@ const CloudMessaging = () => {
                     </div>
                     <div className="card-body">
                         <div className="row">
-                           
+
 
                             <div className="col-lg-12">
                                 <div className="form-group">
@@ -98,7 +101,7 @@ const CloudMessaging = () => {
                                     <label>Title</label>
                                     <input type="text" required value={title} onMouseDown={e => valchange(true)} onChange={e => titlechange(e.target.value)} className="form-control"></input>
                                     {title.length == 0 && validation && <span className="text-danger">Enter the Title</span>}
-                                    
+
                                 </div>
                             </div>
 
@@ -120,7 +123,7 @@ const CloudMessaging = () => {
                             </div>
 
 
-                           
+
 
                         </div>
                     </div>
