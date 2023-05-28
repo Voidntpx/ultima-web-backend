@@ -46,8 +46,9 @@ const FragranceCreate = (props) => {
         setCate(event.target.value);
     };
 
-    const [tryon_name, tryon_namechange] = useState("");
-    const [tryon_color, tryon_colorchange] = useState("");
+    // const [tryon_name, tryon_namechange] = useState("");
+    // const [tryon_color, tryon_colorchange] = useState("");
+    const [p_img, p_imgchange] = useState("");
     const [ing_id, ing_idchange] = useState("");
     // const [cos_color_img, cos_color_imgchange] = useState("");
 
@@ -63,21 +64,21 @@ const FragranceCreate = (props) => {
 
     const navigate = useNavigate();
 
-    const checkHandler = () => {
-        setIsChecked(!tryon)
-    }
+    // const checkHandler = () => {
+    //     setIsChecked(!tryon)
+    // }
 
 
 
-    const list_tryon_name = tryon_name.split(',');
-    const list_tryon_color = tryon_color.split(',');
+    // const list_tryon_name = tryon_name.split(',');
+    // const list_tryon_color = tryon_color.split(',');
 
     async function sendImg(listColorImg) {
         let urlColorImg = [];
         for (let i = 0; i < listColorImg.length; i++) {
             let storageRef = ref(storage, uuidv4());
             await uploadBytes(storageRef, listColorImg[i][0]).then((snapshot) => {
-                console.log(snapshot);
+                // console.log(snapshot);
                 urlColorImg.push("https://firebasestorage.googleapis.com/v0/b/ultima-b32f3.appspot.com/o/" + snapshot.metadata.fullPath + "?alt=media");
             });
         }
@@ -137,30 +138,32 @@ const FragranceCreate = (props) => {
         }
 
         const cosdata = {
-            "cos_brand": brand,
-            "cos_name": name,
-            "cos_desc": desc,
-            "cos_cate": cate,
-            "cos_img": cos_img_list,
-            "cos_istryon": tryon,
-            "cos_color_img": urlColorImg,
-            "cos_tryon_name": list_tryon_name,
-            "cos_tryon_color": list_tryon_color,
+            "p_brand": brand,
+            "p_name": name,
+            "p_desc": desc,
+            "p_cate": cate,
+            "p_img": p_img,
+            // "l_link":,
+            // "cos_istryon": tryon,
+            // "cos_color_img": urlColorImg,
+            // "cos_tryon_name": list_tryon_name,
+            // "cos_tryon_color": list_tryon_color,
             "ing_id": mylist
+            
         };
-        console.log(tryon);
+        console.log(cosdata);
 
 
-        fetch("https://apiservice-d5qtigtmea-as.a.run.app/cosmetic/create", {
-            method: "POST",
-            headers: { "content-type": "application/json" },
-            body: JSON.stringify(cosdata)
-        }).then((res) => {
-            alert('Saved successfully.')
-            navigate('/')
-        }).catch((err) => {
-            console.log(err.message)
-        })
+        // fetch("https://apiservice-d5qtigtmea-as.a.run.app/fragrance/create", {
+        //     method: "POST",
+        //     headers: { "content-type": "application/json", "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6ZmFsc2UsInVzZXJuYW1lIjoiRnJhbmsifQ.b2tDz1PyZBMF7IuelehsHvhmD8d2uZt2lrndTB7XMWc" },
+        //     body: JSON.stringify(cosdata)
+        // }).then((res) => {
+        //     alert('Saved successfully.')
+        //     navigate('/')
+        // }).catch((err) => {
+        //     console.log(err.message)
+        // })
 
 
 
@@ -194,7 +197,7 @@ const FragranceCreate = (props) => {
     const [previewImages, setPreviewImages] = useState([]);
     const [color_img_disabled, setColorDisabled] = useState(true);
     // console.log(cos_color_img_list);
-    console.log(previewImages);
+    // console.log(previewImages);
 
     useEffect(() => {
         if (fileInputRef.current) {
@@ -222,6 +225,8 @@ const FragranceCreate = (props) => {
         list.splice(index, 1);
         console.log('delete');
         setCos_color_img_list(list);
+
+        
         const updatedPreviewList = [...previewImages];
         updatedPreviewList.splice(index, 1);
         setPreviewImages(updatedPreviewList);
@@ -325,7 +330,7 @@ const FragranceCreate = (props) => {
                                             {/* <MenuItem value="">
                                                 <em>None</em>
                                             </MenuItem> */}
-                                            <MenuItem value={10}>Fragrance</MenuItem>
+                                            <MenuItem value={"Fragrance"}>Fragrance</MenuItem>
                                             {/* <MenuItem value={20}>Twenty</MenuItem>
                                             <MenuItem value={30}>Thirty</MenuItem> */}
                                         </Select>
@@ -335,13 +340,21 @@ const FragranceCreate = (props) => {
                                     
                                     {/* <input type="text" required value={cate} onMouseDown={e => valchange4(true)} onChange={e => catechange(e.target.value)} className="form-control"></input>
                                     {cate.length == 0 && validation4 && <span className="text-danger">Enter the Category</span>} */}
-
-                                    <br></br>
+                                    <div className="col-lg-12">
+                                        <div className="form-group">
+                                            <br></br>
+                                            <label>Fragrance Image</label>
+                                            <input type="text" required value={p_img} onMouseDown={e => valchange6(true)} onChange={e => p_imgchange(e.target.value)} className="form-control"></input>
+                                            {p_img.length == 0 && validation6 && <span className="text-danger">eg. Lazada, Konvy</span>}
+                                        </div>
+                                    </div>
+                                   
                                     <br></br>
                                     <label>Link to store</label>
                                     
                                 </div>
                             </div>
+                            
 
                             {cos_img_list.map((singleService, index) => (
                                 <div key={index} className="services">
@@ -380,60 +393,6 @@ const FragranceCreate = (props) => {
                             ))}
 
 
-                            {/* <div className="col-lg-12">
-
-                                <br></br>
-                                <label>Color Image</label>
-
-                            </div>
-
-                            <div className='d-flex align-items-center pt-3'>
-                                {cos_color_img_list.map((singleService, index) => (
-                                    <div key={index} className="services">
-                                        <div className="first-division">
-                            
-                                            <input
-                                                className="input-cos-img"
-                                                name="service"
-                                                accept="image/*" type='file'
-                                                id="service"
-                                                ref={fileInputRef}
-                                                value={singleService.service}
-                                                onChange={(e) => handleCos_color_imgChange(e, index)}
-                                                disabled={color_img_disabled}
-                                            />
-                                           
-                                            <div className='d-flex align-items-center'>
-                                                {previewImages[index] && (
-                                                    <div className="preview-images pe-3">
-                                                        {previewImages[index].map((previewImage, subIndex) => (
-                                                            <div className='color-img' onClick={() => handleCos_color_imgRemove(index)} key={subIndex}
-                                                                
-                                                                style={{ backgroundImage: `url(${previewImage})` }}></div>
-                                                           
-                                                        ))}
-                                                    </div>
-                                                )}
-
-                                                {cos_color_img_list.length - 1 === index && cos_color_img_list.length < 100 && (
-                                                    <button
-                                                        type="button"
-                                                        onClick={handleCos_color_imgAdd}
-                                                        className="add-btn btn-color-img"
-                                                    >
-                                                        <FontAwesomeIcon icon="fa-solid fa-plus" />
-                                                    </button>
-                                                )}
-                                            </div>
-
-                                        </div>
-                                        
-                                    </div>
-                                ))}
-                            </div> */}
-
-
-
                            
                             <div className="col-lg-12">
                                 <div className="form-group">
@@ -443,6 +402,11 @@ const FragranceCreate = (props) => {
                                     {ing_id.length == 0 && validation7 && <span className="text-danger">eg. Propanediol,Cyclohexasiloxane</span>}
                                 </div>
                             </div>
+
+                           
+                           
+
+
                             
 
                             <div className="col-lg-12">

@@ -24,6 +24,8 @@ import SkincareListing from './SkincareListing';
 import CloudMessaging from './CloudMessaging';
 import RewardListing from './RewardListing'
 import FragranceCreate from './FragranceCreate';
+import RewardCreate from './RewardCreate';
+import SkincareCreate from './SkincareCreate';
 // import { getAnalytics } from "firebase/analytics";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -135,6 +137,7 @@ const CheckRoute = () => {
                   <Route path='/fragrance/create' element={<FragranceCreate />}></Route>
 
                   <Route path='/skincare' element={<SkincareListing />}></Route>
+                  <Route path='/skincare/create' element={<SkincareCreate />}></Route>
 
                   <Route path='/cosmetic/create' element={<CosmeticCreate />}></Route>
                   <Route path='/cosmetic/detail/:cosid' element={<CosmeticDetail />}></Route>
@@ -146,6 +149,7 @@ const CheckRoute = () => {
                   <Route path='/push-notification' element={<CloudMessaging />}></Route>
 
                   <Route path='/reward' element={<RewardListing />}></Route>
+                  <Route path='/reward/create' element={<RewardCreate />}></Route>
                 </Routes>
               </div>
               <CheckRoute />

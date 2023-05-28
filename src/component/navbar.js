@@ -31,7 +31,7 @@ class Navbar extends Component {
         // const [emaildata, emaildatachange] = useState("");
         var token = cookies.get('jwt');
         var decoded = jwt_decode(token);
-        console.log(decoded)
+        // console.log(decoded)
         // emaildatachange(decoded['email'])
         return (
             <div>

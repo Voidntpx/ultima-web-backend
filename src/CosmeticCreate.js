@@ -258,7 +258,7 @@ const CosmeticCreate = (props) => {
 
     return (
         <div className="create-cosmetic">
-            <p className="title">Add Cosmetic</p>
+            <p className="title">Add New Cosmetic</p>
             <form className="container" onSubmit={handlesubmit}>
                 <div className="card create-cosmetic-card" style={{ "textAlign": "left" }}>
                     <div className="card-title">
